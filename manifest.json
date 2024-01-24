@@ -1,13 +1,10 @@
 {
-    "manifest_version": 2,
-    "name": "NoteTaker Extension",
-    "version": "1.0",
-    "description": "A simple note-taking extension",
-    "browser_action": {
-      "default_popup": "popup.html"
+    "name": "Jot, it's saved!",
+    "version": "0.1",
+    "manifest_version": 3,
+    "description": "Provides definitions in the side panel.",
+    "side_panel": {
+      "default_path": "sidepanel.html"
     },
-    "permissions": [
-      "storage"
-    ]
+    "permissions": ["sidePanel", "contextMenus"]
   }
-  
