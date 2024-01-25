@@ -45,11 +45,3 @@ Remove unwanted notes by clicking the delete button next to each note.
 **Issue:** Cannot download notes. Notes storage is empty.
 
 **Solution:** Save a note first, and then try downloading.
-
-## Support
-
-For further assistance or to report issues, please contact our support team at [support@email.com].
-
-## License
-
-**Jot, it's saved!** is licensed under [mention the license type]. See the [LICENSE](LICENSE) file for details.
