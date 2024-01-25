@@ -31,6 +31,7 @@ function viewNotes() {
     if (notes.length === 0) {
         // Handle empty array
         const emptyMessage = document.createElement('div');
+        emptyMessage.classList.add('message');
         emptyMessage.textContent = 'No notes available.';
         messagesBox.appendChild(emptyMessage);
     } else {
@@ -41,6 +42,7 @@ function viewNotes() {
 
             // Create a new div element
             const div = document.createElement('div');
+            div.classList.add('message');
 
             // Set the content of the div to the values from the current note
             div.textContent = valuesArray.join(', '); // Join the values with ", " for better readability

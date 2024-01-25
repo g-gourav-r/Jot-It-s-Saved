@@ -12,7 +12,7 @@
             background-color: #2D3250;
         }
 
-        .container {
+        .container-input {
             width: 100%;
             max-width: 250px;
             border: 1px solid #ced4da;
@@ -45,14 +45,25 @@
             color: #F6B17A;
         }
 
-        .messages{
+        .message{
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 5px;
             background-color: #7077A1;
+            color: white;
+            font-weight:500;
+        }
+
+        .messages{
+            width: 100%;
+            max-width: 250px;
         }
 
     </style>
 </head>
 <body>
-    <div class="container h-400 w-400">
+    <div class="container container-input h-400 w-400">
         <div class="textbox">
             <textarea class="form-control" id="noteTextarea" rows="5" placeholder="Enter your note..."></textarea>
         </div>
@@ -61,8 +72,9 @@
             <div class="button col d-flex justify-content-around"><button class="btn btn-sm text-center" id="viewNotesButton">Download note</button></div>
         </div>
     </div>
-    <div class="container messages">
-        <div class="messagebox" id="messagesBox">
+    <div class="container messages" id="messagesBox">
+        <div class="message" > 
+            kemcho
             <!-- Messages will be displayed here -->
         </div>
     </div>
