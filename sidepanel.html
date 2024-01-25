@@ -60,6 +60,33 @@
             max-width: 250px;
         }
 
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 16px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .show {
+            display: block;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 20px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 20px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
     </style>
 </head>
 <body>
@@ -77,6 +104,8 @@
             kemcho
             <!-- Messages will be displayed here -->
         </div>
+    </div>
+    <div class="toast" id="toastMessage">   
     </div>
 </body>
 </html>

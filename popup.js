@@ -15,10 +15,10 @@ document.getElementById('viewNotesButton').addEventListener('click', function ()
 function addNoteAndAlert(noteContent) {
     if (noteContent.trim() !== '') {
         notes.push(noteContent);
-        alert('Note saved');
+        showToast('Note saved');
         viewNotes();
     } else {
-        alert('Please enter a non-empty note.');
+        showToast('Please enter a non-empty note.');
     }
 }
 
@@ -51,4 +51,12 @@ function viewNotes() {
             messagesBox.appendChild(div);
         });
     }
+}
+function showToast(msg) {
+    var toast = document.getElementById('toastMessage');
+    toast.innerHTML = '<p>' + msg + '</p>';
+    toast.classList.add('show');
+    setTimeout(function(){
+        toast.classList.remove('show');
+    }, 3000);
 }
