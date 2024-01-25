@@ -1,88 +1,55 @@
-# Jot! It's Saved
+# Jot, it's saved! - Browser Extension Documentation
 
-## Overview
+## Introduction
 
-The Note Keeper browser extension allows users to seamlessly save and manage notes directly within their browser. This documentation provides a comprehensive understanding of the extension's HTML and JavaScript code structure, explaining key functionalities and how the code is organized.
+**Jot, it's saved!** is a simple browser extension that allows you to quickly save notes directly from your browser. This documentation provides a brief overview of the extension's features and how to use them.
 
-## HTML Structure (popup.html)
-The HTML file (popup.html) defines the structure of the extension's popup interface. It includes the following components:
+## Installation
 
-### Input Box and Buttons
+1. Open your preferred web browser (**I have tested this only on Google Chrome** ).
+2. Turn on "Developers Mode".
+3. Click on "locad Unpacked".
+4. Select the file where you downloaded this code.
+5. This will work only in sidebar panel.
 
-- Textarea for Note Entry:
+## Getting Started
 
+After installing the extension, you'll find a small popup where you can jot down your notes. Follow these steps to get started:
 
-<textarea class="form-control" id="noteTextarea" rows="5" placeholder="Enter your note..."></textarea>
+1. Open the sidebar panel, select the extension by clicking on its icon.
+2. Enter your note in the provided text area.
+3. Click the "Save note" button to save your note.
+4. To download all your notes, click the "Download note" button.
 
-- Save and Download Buttons:
+## Features
 
+### Save Notes Easily
+Quickly save notes from any webpage without leaving your browser.
 
-<button class="btn btn-sm text-center" id="addNoteButton">Save note</button>
-<button class="btn btn-sm text-center" id="downloadNotesButton">Download note</button>
+### Download Notes
+Export all your saved notes as a JSON file for offline access.
 
-Display Area for Notes
+### Visual Feedback
+Receive toast messages for successful note saving or deletion.
 
-- Messages Box:
+## Managing Notes
 
+### Viewing Notes
+All saved notes are displayed in the extension popup.
 
-<div class="container messages" id="messagesBox"></div>
+### Deleting Notes
+Remove unwanted notes by clicking the delete button next to each note.
 
-### Toast Notification
+## Troubleshooting
 
-- Toast Message Window:
+**Issue:** Cannot download notes. Notes storage is empty.
 
+**Solution:** Save a note first, and then try downloading.
 
-<div class="toast" id="toastMessage"></div>
+## Support
 
-## JavaScript Logic (popup.js)
+For further assistance or to report issues, please contact our support team at [support@email.com].
 
-The JavaScript file (popup.js) provides the functionality to interact with the HTML components and manage user notes. Key functions are outlined below:
+## License
 
-### Initialization and Display
-
-- Initialization:
-
-document.addEventListener('DOMContentLoaded', function() {
-    viewNotes();
-});
-
-Initializes the extension by calling the viewNotes function to display existing notes.
-
-- Adding Notes
-
-document.getElementById('addNoteButton').addEventListener('click', function() {
-    const noteContent = document.getElementById('noteTextarea').value;
-    addNoteAndAlert(noteContent);
-    document.getElementById('noteTextarea').value = "";
-});
-Captures user input, adds the note to local storage, and triggers a toast notification.
-
-- Downloading Notes
-
-
-document.getElementById('downloadNotesButton').addEventListener('click', function() {
-    downloadNotes();
-});
-Initiates the download of notes in JSON format.
-
-### Viewing and Deleting Notes
-
-- Viewing Notes:
-
-
-function viewNotes() { /* ... */ }
-Dynamically renders notes in the messages box.
-
-- Deleting Notes:
-
-function deleteNoteAndAlert(note) { /* ... */ }
-Deletes a selected note and triggers a toast notification.
-
-- Toast Notification
-
-
-function showToast(msg) { /* ... */ }
-Displays a temporary notification message at the bottom of the popup.
-
-## Conclusion
-The Note Keeper extension provides a simple yet effective way for users to manage their notes directly within their browser. The HTML and JavaScript code work together seamlessly to deliver a user-friendly experience.
+**Jot, it's saved!** is licensed under [mention the license type]. See the [LICENSE](LICENSE) file for details.
