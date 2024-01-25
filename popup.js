@@ -1,52 +1,110 @@
-// popup.js
+const notes = JSON.parse(localStorage.getItem('notes')) || [];
 
-const notes = [];
-
-document.getElementById('addNoteButton').addEventListener('click', function () {
-    const noteContent = document.getElementById('noteTextarea').value;
-    addNoteAndAlert(noteContent);
-    document.getElementById('noteTextarea').value = ""
+document.addEventListener('DOMContentLoaded', function() {
+    // Call the 'viewNotes' function to display existing notes
+    viewNotes();
 });
 
-document.getElementById('viewNotesButton').addEventListener('click', function () {
-    viewNotes();
+document.getElementById('addNoteButton').addEventListener('click', function() {
+    const noteContent = document.getElementById('noteTextarea').value;
+    addNoteAndAlert(noteContent);
+    document.getElementById('noteTextarea').value = "";
 });
 
 function addNoteAndAlert(noteContent) {
     if (noteContent.trim() !== '') {
         notes.push(noteContent);
-        alert('Note saved');
+        localStorage.setItem('notes', JSON.stringify(notes));
+        showToast('Note saved');
         viewNotes();
     } else {
-        alert('Please enter a non-empty note.');
+        showToast('Please enter a non-empty note.');
     }
 }
 
+
+
+document.getElementById('downloadNotesButton').addEventListener('click', function() {
+    downloadNotes();
+});
+
+function downloadNotes() {
+    if (notes.length === 0) {
+        alert('Cannot download. Notes storage is empty.');
+        return;
+    }
+
+    const notesData = JSON.stringify(notes);
+    const blob = new Blob([notesData], {
+        type: 'application/json'
+    });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'notes.json';
+
+    // Append the 'a' element to the DOM and trigger a click to start the download
+    document.body.appendChild(a);
+    a.click();
+
+    // Remove the 'a' element from the DOM
+    document.body.removeChild(a);
+}
+
+
 function viewNotes() {
     const messagesBox = document.getElementById('messagesBox');
-
-    // Clear existing content in the messages box
     messagesBox.innerHTML = '';
 
     if (notes.length === 0) {
-        // Handle empty array
         const emptyMessage = document.createElement('div');
-        emptyMessage.textContent = 'No notes available.';
+        emptyMessage.classList.add('message');
+        emptyMessage.textContent = 'Woah !! your notes are clean.';
         messagesBox.appendChild(emptyMessage);
     } else {
-        // Loop through the array and create a new div for each set of comma-separated values
-        notes.forEach(function (note) {
-            // Split the current note into an array using ","
+        notes.forEach(function(note) {
             const valuesArray = note.split(',');
-
-            // Create a new div element
             const div = document.createElement('div');
+            div.classList.add('message');
 
-            // Set the content of the div to the values from the current note
-            div.textContent = valuesArray.join(', '); // Join the values with ", " for better readability
+            const noteContent = document.createElement('span');
+            noteContent.textContent = valuesArray.join(', ');
+            div.appendChild(noteContent);
 
-            // Append the new div to the messages box
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+            deleteButton.classList.add('delete-button');
+            deleteButton.addEventListener('click', function() {
+                deleteNoteAndAlert(note);
+            });
+
+            // Appending delete button to the right
+            div.appendChild(deleteButton);
+
             messagesBox.appendChild(div);
         });
+
     }
+}
+
+
+function deleteNoteAndAlert(note) { // Fix here: change parameter to 'note'
+    const noteIndex = notes.indexOf(note);
+    if (noteIndex !== -1) {
+        notes.splice(noteIndex, 1);
+        localStorage.setItem('notes', JSON.stringify(notes));
+        showToast('Note deleted');
+        viewNotes();
+    }
+}
+
+function showToast(msg) {
+    var toast = document.getElementById('toastMessage');
+    toast.innerHTML = '<p>' + msg + '</p>';
+    toast.classList.add('show');
+    setTimeout(function() {
+        toast.classList.remove('show');
+    }, 3000);
 }

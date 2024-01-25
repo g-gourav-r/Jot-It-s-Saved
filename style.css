@@ -1,0 +1,107 @@
+body {
+    padding: 2px;
+    background-color: #2D3250;
+}
+
+.container-input {
+    width: 100%;
+    max-width: 250px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.textbox {
+    margin-bottom: 10px;
+    background-color: #424769;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.textbox textarea {
+    width: 100%;
+    height: 150px;
+    background-color: #7077A1;
+    margin: 0;
+    border: 0;
+}
+
+.textbox textarea:focus {
+    background-color: #7077A1;
+}
+
+.btn {
+    background-color: #F6B17A;
+    border-radius: 25px;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn:hover {
+    background-color: #7077A1;
+    color: #F6B17A;
+}
+
+.messages {
+    width: 100%;
+    max-width: 250px;
+}
+
+.message {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #7077A1;
+    color: white;
+    font-weight: 500;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-button {
+    background-color: #F6B17A;
+    color: #ffffff;
+    border-radius: 25px;
+    padding: 5px 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.delete-button:hover {
+    background-color: #7077A1;
+    color: #F6B17A;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #F6B17A;
+    color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    display: none;
+    justify-content: center;
+}
+
+.show {
+    display: block;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 20px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {bottom: 20px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
