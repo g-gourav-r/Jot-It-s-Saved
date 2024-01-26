@@ -6,6 +6,8 @@
 
 ## Installation
 
+https://github.com/g-gourav-r/Jot-Its-Saved/assets/75977813/c85844f3-b070-469f-b79a-7c4c30099b20
+
 1. Open your preferred web browser (**I have tested this only on Google Chrome** ).
 2. Turn on "Developers Mode".
 3. Click on "locad Unpacked".
